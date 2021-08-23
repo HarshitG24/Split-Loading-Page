@@ -1,3 +1,10 @@
+:root {
+  --left-bg-color: rgba(87, 84, 236, 0.7);
+  --right-bg-color: rgba(43, 43, 43, 0.8);
+  --left-hover-bg-color: rgba(87, 84, 236, 1);
+  --right-hover-bg-color: rgba(28, 122, 28, 1);
+}
+
 *,
 *::before,
 *::after {
@@ -11,11 +18,90 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin: 0;
   overflow: hidden; /* to keep scroll bars hidden by default */
   height: 100vh;
+}
+
+.container {
+  position: relative;
+  background: #333;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container h1 {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  /* using only left and top will put beginning of H1 in the middle and the not the middle of H1 in the middle */
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.split {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.split.left {
+  left: 0;
+  background: url(/images/ps5.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split.left::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--left-bg-color);
+}
+
+.split.right {
+  right: 0;
+  background: url(/images/xbox.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split.right::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--right-bg-color);
+}
+
+.btn {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  color: #fff;
+  border: 0.1rem solid #fff;
+  font-size: 1rem;
+  width: 15rem;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.split.left .btn:hover {
+  background-color: var(--left-hover-bg-color);
+}
+
+.split.right .btn:hover {
+  background-color: var(--right-hover-bg-color);
 }
